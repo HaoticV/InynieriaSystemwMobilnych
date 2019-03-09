@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Zliczanie pól figur</string>
+    <string name="hint01">Suma pól</string>
+    <string name="hint02">Dodaj kolejne pole</string>
+    <string name="hint11">Pole trójkąta=</string>
+    <string name="hint12">Pole prostokąta=</string>
+    <string name="hint13">Pole koła=</string>
+    <string name="button01">RESETUJ</string>
+    <string name="button02">TRÓJKĄT</string>
+    <string name="button03">PROSTOKĄT</string>
+    <string name="button04">KOŁO</string>
+    <string name="button11">OBLICZ</string>
+    <string name="button12">DODAJ</string>
+    <string name="button13">REZYGNACJA</string>
+</resources>
