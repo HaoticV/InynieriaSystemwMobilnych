@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CircleActivity extends AppCompatActivity {
     public static final String RESULT = "";
@@ -30,10 +32,15 @@ public class CircleActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        double r=Double.parseDouble(((EditText) findViewById(R.id.aEditText)).getText().toString());
+                        hideKeyboard();
+                        try {
+                            double r = Double.parseDouble(((EditText) findViewById(R.id.rEditText)).getText().toString());
 
-                        c = new Circle(r);
-                        ((TextView)findViewById(R.id.resultTextView)).setText(String.valueOf(c.area()));
+                            c = new Circle(r);
+                            ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(c.area()));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(CircleActivity.this, "Podaj długość promienia", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );
@@ -60,5 +67,13 @@ public class CircleActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    void hideKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(RectangleActivity.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

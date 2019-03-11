@@ -5,6 +5,9 @@
     <string name="hint11">Pole trójkąta=</string>
     <string name="hint12">Pole prostokąta=</string>
     <string name="hint13">Pole koła=</string>
+    <string name="hint21">Podaj długości boków trójkąta</string>
+    <string name="hint22">Podaj długości boków prostokąta</string>
+    <string name="hint23">Podaj promień koła</string>
     <string name="button01">RESETUJ</string>
     <string name="button02">TRÓJKĄT</string>
     <string name="button03">PROSTOKĄT</string>
