@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RectangleActivity extends AppCompatActivity {
-    public static final String RESULT = "";
+    public static final String RESULT = "0.0";
     private RectangleActivity.Rectangle r;
 
     class Rectangle {
@@ -50,11 +50,15 @@ public class RectangleActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Double area_string=(r.area());
-                        Intent backIntent = new Intent();
-                        backIntent.putExtra(RESULT, area_string);
-                        setResult(RESULT_OK, backIntent);
-                        finish();
+                        try {
+                            Double area_string = (r.area());
+                            Intent backIntent = new Intent();
+                            backIntent.putExtra(RESULT, area_string);
+                            setResult(RESULT_OK, backIntent);
+                            finish();
+                        } catch (Exception e) {
+                            Toast.makeText(RectangleActivity.this, "Podaj długości wszystkich boków", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );
