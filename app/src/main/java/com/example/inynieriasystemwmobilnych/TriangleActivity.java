@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TriangleActivity extends AppCompatActivity {
-    public static final String RESULT = "Area of Triangle";
+    public static final String RESULT = "Area";
     private Triangle t;
 
     class Triangle {

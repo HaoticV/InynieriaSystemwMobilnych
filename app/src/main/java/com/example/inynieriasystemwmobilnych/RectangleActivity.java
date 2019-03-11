@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RectangleActivity extends AppCompatActivity {
-    public static final String RESULT = "Area of rectangle";
+    public static final String RESULT = "Area";
     private RectangleActivity.Rectangle r;
 
     class Rectangle {

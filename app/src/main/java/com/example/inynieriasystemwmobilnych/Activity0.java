@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class Activity0 extends AppCompatActivity {
 
+    public static String RESULT = "Area";
     public static final int CODE_TRIANGLE=10;
     public static final int CODE_RECTANGLE = 11;
     public static final int CODE_CIRCLE = 12;
@@ -34,8 +35,8 @@ public class Activity0 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Activity0.this, RectangleActivity.class);
-                        startActivityForResult(intent, CODE_RECTANGLE);
+                        Intent rectangleIntent = new Intent(Activity0.this, RectangleActivity.class);
+                        startActivityForResult(rectangleIntent, CODE_RECTANGLE);
 
                     }
                 }
@@ -44,8 +45,8 @@ public class Activity0 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Activity0.this, CircleActivity.class);
-                        startActivityForResult(intent, CODE_CIRCLE);
+                        Intent circleIntent = new Intent(Activity0.this, CircleActivity.class);
+                        startActivityForResult(circleIntent, CODE_CIRCLE);
 
                     }
                 }
@@ -54,8 +55,7 @@ public class Activity0 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        area=0;
-                        ((TextView)findViewById(R.id.resultTextView)).setText(String.valueOf(area));
+                        ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(0.0));
                     }
                 }
         );
@@ -64,9 +64,8 @@ public class Activity0 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == Activity.RESULT_OK) {
-            Double new_area = data.getDoubleExtra(TriangleActivity.RESULT, 0);
+            Double new_area = Double.parseDouble(data.getExtras().get("Area").toString());
             area += new_area;
             ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(area));
         }
