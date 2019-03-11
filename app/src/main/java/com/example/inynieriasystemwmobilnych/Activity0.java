@@ -2,15 +2,17 @@ package com.example.inynieriasystemwmobilnych;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 public class Activity0 extends AppCompatActivity {
 
     public static final int CODE_TRIANGLE=10;
+    public static final int CODE_RECTANGLE = 11;
+    public static final int CODE_CIRCLE = 12;
     private double area=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class Activity0 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Activity0.this, RectangleActivity.class);
-                        startActivityForResult(intent, CODE_TRIANGLE);
+                        startActivityForResult(intent, CODE_RECTANGLE);
 
                     }
                 }
@@ -43,7 +45,7 @@ public class Activity0 extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Activity0.this, CircleActivity.class);
-                        startActivityForResult(intent, CODE_TRIANGLE);
+                        startActivityForResult(intent, CODE_CIRCLE);
 
                     }
                 }

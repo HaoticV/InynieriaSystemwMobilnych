@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CircleActivity extends AppCompatActivity {
-    public static final String RESULT = "0.0";
+    public static final String RESULT = "Area of circle";
     private Circle c;
 
     class Circle {
