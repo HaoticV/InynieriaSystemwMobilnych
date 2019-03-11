@@ -10,16 +10,15 @@ import android.widget.TextView;
 
 public class Activity0 extends AppCompatActivity {
 
-    public static String RESULT = "Area";
-    public static final int CODE_TRIANGLE=10;
+    public static final int CODE_TRIANGLE = 10;
     public static final int CODE_RECTANGLE = 11;
     public static final int CODE_CIRCLE = 12;
-    private double area=0;
+    private double area = 0.0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_0);
-        area=0.0;
 
         findViewById(R.id.triangleButton).setOnClickListener(
                 new View.OnClickListener() {
@@ -55,7 +54,8 @@ public class Activity0 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(0.0));
+                        area = 0.0;
+                        ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(area));
                     }
                 }
         );
