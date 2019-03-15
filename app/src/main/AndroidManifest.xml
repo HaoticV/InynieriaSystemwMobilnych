@@ -16,8 +16,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            android:name=".TriangleActivity"
-            android:label="Pole trójkąta"
         </activity>
         <activity android:name=".TriangleActivity"
             android:screenOrientation="portrait"/>
