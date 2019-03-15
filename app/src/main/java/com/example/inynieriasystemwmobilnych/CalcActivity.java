@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
 
-public class CalcActivity extends AppCompatActivity {
+abstract public class CalcActivity extends AppCompatActivity {
 
     public static final String RESULT = "Area";
 

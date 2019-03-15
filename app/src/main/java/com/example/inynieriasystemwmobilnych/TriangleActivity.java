@@ -11,6 +11,22 @@ import android.widget.Toast;
 public class TriangleActivity extends CalcActivity {
     private Triangle t;
 
+    class Triangle {
+        private double a, b, c;
+
+        Triangle(double _a, double _b, double _c) {
+            a = _a;
+            b = _b;
+            c = _c;
+        }
+
+        double area() {
+            double p = (a + b + c) / 2;
+            double w = (p - a) * (p - b) * (p - c) * p;
+            return Math.sqrt(w);
+        }
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,21 +83,6 @@ public class TriangleActivity extends CalcActivity {
         );
     }
 
-    class Triangle {
-        private double a, b, c;
-
-        Triangle(double _a, double _b, double _c) {
-            a = _a;
-            b = _b;
-            c = _c;
-        }
-
-        double area() {
-            double p = (a + b + c) / 2;
-            double w = (p - a) * (p - b) * (p - c) * p;
-            return Math.sqrt(w);
-        }
-    }
 }
 
 
