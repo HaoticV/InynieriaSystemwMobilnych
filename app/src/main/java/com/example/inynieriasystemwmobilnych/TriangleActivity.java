@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TriangleActivity extends CalcActivity {
-    private Triangle t;
+    static private Triangle T;
 
     class Triangle {
         private double a, b, c;
@@ -27,6 +27,13 @@ public class TriangleActivity extends CalcActivity {
         }
     }
 
+    Triangle parse() {
+        double a = Double.parseDouble(((EditText) findViewById(R.id.aEditText)).getText().toString());
+        double b = Double.parseDouble(((EditText) findViewById(R.id.bEditText)).getText().toString());
+        double c = Double.parseDouble(((EditText) findViewById(R.id.cEditText)).getText().toString());
+        return new Triangle(a, b, c);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +41,12 @@ public class TriangleActivity extends CalcActivity {
         findViewById(R.id.triangleCaclcButton).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) throws NumberFormatException {
+                    public void onClick(View view) {
                         hideKeyboard();
                         try {
-                            Double a = Double.parseDouble(((EditText) findViewById(R.id.aEditText)).getText().toString());
-                            Double b = Double.parseDouble(((EditText) findViewById(R.id.bEditText)).getText().toString());
-                            Double c = Double.parseDouble(((EditText) findViewById(R.id.cEditText)).getText().toString());
-                            if (a + b > c && a + c > b && b + c > a) {
-                                t = new Triangle(a, b, c);
-                                ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(t.area()));
+                            T = parse();
+                            if (T.a + T.b > T.c && T.a + T.c > T.b && T.b + T.c > T.a) {
+                                ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(T.area()));
                             } else {
                                 Toast.makeText(TriangleActivity.this, "Zły trójkąt", Toast.LENGTH_LONG).show();
                             }
@@ -58,12 +62,18 @@ public class TriangleActivity extends CalcActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Double area_string;
                         try {
-                            Double area_string = (t.area());
-                            Intent backIntent = new Intent();
-                            backIntent.putExtra(RESULT, area_string);
-                            setResult(RESULT_OK, backIntent);
-                            finish();
+                            T = parse();
+                            if (T.a + T.b > T.c && T.a + T.c > T.b && T.b + T.c > T.a) {
+                                area_string = (T.area());
+                                Intent backIntent = new Intent();
+                                backIntent.putExtra(RESULT, area_string);
+                                setResult(RESULT_OK, backIntent);
+                                finish();
+                            } else {
+                                Toast.makeText(TriangleActivity.this, "Zły trójkąt", Toast.LENGTH_LONG).show();
+                            }
                         } catch (Exception e) {
                             Toast.makeText(TriangleActivity.this, "Podaj długości wszystkich boków", Toast.LENGTH_LONG).show();
                         }

@@ -24,6 +24,12 @@ public class RectangleActivity extends CalcActivity {
         }
     }
 
+    Rectangle parse() {
+        double a = Double.parseDouble(((EditText) findViewById(R.id.aEditText)).getText().toString());
+        double b = Double.parseDouble(((EditText) findViewById(R.id.bEditText)).getText().toString());
+        return new Rectangle(a, b);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +40,7 @@ public class RectangleActivity extends CalcActivity {
                     public void onClick(View view) {
                         hideKeyboard();
                         try {
-                            double a = Double.parseDouble(((EditText) findViewById(R.id.aEditText)).getText().toString());
-                            double b = Double.parseDouble(((EditText) findViewById(R.id.bEditText)).getText().toString());
-
-                            r = new Rectangle(a, b);
+                            r = parse();
                             ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(r.area()));
                         } catch (NumberFormatException e) {
                             Toast.makeText(RectangleActivity.this, "Podaj długości wszystkich boków", Toast.LENGTH_LONG).show();
@@ -50,6 +53,7 @@ public class RectangleActivity extends CalcActivity {
                     @Override
                     public void onClick(View view) {
                         try {
+                            r = parse();
                             Double area_string = (r.area());
                             Intent backIntent = new Intent();
                             backIntent.putExtra(RESULT, area_string);

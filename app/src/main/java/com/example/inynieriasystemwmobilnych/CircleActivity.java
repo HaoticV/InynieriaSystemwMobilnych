@@ -23,6 +23,11 @@ public class CircleActivity extends CalcActivity {
         }
     }
 
+    Circle parse() {
+        double r = Double.parseDouble(((EditText) findViewById(R.id.rEditText)).getText().toString());
+        return new Circle(r);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +38,7 @@ public class CircleActivity extends CalcActivity {
                     public void onClick(View view) {
                         hideKeyboard();
                         try {
-                            double r = Double.parseDouble(((EditText) findViewById(R.id.rEditText)).getText().toString());
-
-                            c = new Circle(r);
+                            c = parse();
                             ((TextView) findViewById(R.id.resultTextView)).setText(String.valueOf(c.area()));
                         } catch (NumberFormatException e) {
                             Toast.makeText(CircleActivity.this, "Podaj długość promienia", Toast.LENGTH_LONG).show();
@@ -48,13 +51,14 @@ public class CircleActivity extends CalcActivity {
                     @Override
                     public void onClick(View view) {
                         try {
+                            c = parse();
                             Double area_string = (c.area());
                             Intent backIntent = new Intent();
                             backIntent.putExtra(RESULT, area_string);
                             setResult(RESULT_OK, backIntent);
                             finish();
                         } catch (Exception e) {
-                            Toast.makeText(CircleActivity.this, "Podaj długości wszystkich boków", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CircleActivity.this, "Podaj długość promienia", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
